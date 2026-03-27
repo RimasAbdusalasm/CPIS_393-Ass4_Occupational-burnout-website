@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Result</title>
+
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    padding: 50px;
+    background: #f0f4ff;
+}
+
+.box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+img {
+    width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+
+.low { color: #2ecc71; }
+.mid { color: #f39c12; }
+.high { color: #e74c3c; }
+
+button {
+    padding: 12px 20px;
+    border: none;
+    background: #4facfe;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Your Result</h1>
+    <h2 id="resultText"></h2>
+
+    <img id="resultImage">
+
+    <p id="advice"></p>
+
+    <button onclick="restart()">Take Test Again</button>
+</div>
+
+<script>
+let score = localStorage.getItem("score");
+
+let text = document.getElementById("resultText");
+let advice = document.getElementById("advice");
+let image = document.getElementById("resultImage");
+
+if (score <= 10) {
+    text.innerHTML = "Low Burnout";
+    text.className = "low";
+    image.src = "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee";
+
+    advice.innerHTML = `
+    • Keep your balance between work and life<br>
+    • Continue healthy habits like sleep and exercise<br>
+    • Stay socially connected
+    `;
+}
+else if (score <= 20) {
+    text.innerHTML = "Moderate Burnout";
+    text.className = "mid";
+    image.src = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f";
+
+    advice.innerHTML = `
+    • Take short breaks during the day<br>
+    • Organize your tasks (To-do list)<br>
+    • Talk to a friend or colleague<br>
+    • Reduce overload if possible
+    `;
+}
+else {
+    text.innerHTML = "High Burnout";
+    text.className = "high";
+    image.src = "https://images.unsplash.com/photo-1492724441997-5dc865305da7";
+
+    advice.innerHTML = `
+    • Take a real break (rest & sleep)<br>
+    • Talk to someone you trust<br>
+    • Reduce workload immediately<br>
+    • Seek professional help if needed
+    `;
+}
+
+function restart() {
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
